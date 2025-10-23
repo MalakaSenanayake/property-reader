@@ -20,5 +20,5 @@ jobs:
           git config user.name MalakaSenanayake
           git config user.email contact.malaka.senanayake@gmail.com
           git add log.txt
-          git commit -m "Daily update: $(date)" || echo "No changes"
+          git commit -m "daily update: $(date)" || echo "no changes"
           git push
