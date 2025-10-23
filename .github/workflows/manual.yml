@@ -1,0 +1,24 @@
+name: auto-commit
+permissions:
+  contents: write
+
+on:
+  schedule:
+    - cron: "0 */3 * * *" #every 3 hours
+  workflow_dispatch:
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+           fetch-depth: 0         # get full history
+           persist-credentials: true
+      - run: |
+          echo "$(date)" >> log.txt
+          git config user.name MalakaSenanayake
+          git config user.email contact.malaka.senanayake@gmail.com
+          git add log.txt
+          git commit -m "Daily update: $(date)" || echo "No changes"
+          git push
