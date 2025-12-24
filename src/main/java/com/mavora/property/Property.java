@@ -1,4 +1,4 @@
-package com.property;
+package com.mavora.property;
 
 interface Property {
     public static final String DATABASE_DEFAULT_BACKUP_PATH = "com.database.defaultBackupPath";

@@ -1,4 +1,4 @@
-package com.property;
+package com.mavora.property;
 
 import org.apache.log4j.PropertyConfigurator;
 
