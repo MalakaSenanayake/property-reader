@@ -1,3 +1,3 @@
-com\property\Property.class
-com\property\Print.class
-com\property\PropertyReader.class
+com\mavora\property\PropertyReader.class
+com\mavora\property\Property.class
+com\mavora\property\Print.class
