@@ -18,7 +18,7 @@ public class PropertyReader {
     //-file names-------------------------------------------------------------------------------------------------------
     private static final String PROPERTY_FILE_NAME = "config.properties";
     private static final String LOG4J_PROPERTY_FILE_NAME = "log4j.properties";
-    private static final String License_FILE_NAME = "mavora.lic";
+    private static final String LICENSE_FILE_NAME = "mavora.lic";
     //--public Properties-----------------------------------------------------------------------------------------------
     public static final String CONFIG_FOLDER_PATH;
     public static final String LOGS_FOLDER_PATH;
@@ -215,7 +215,7 @@ public class PropertyReader {
     //------------------------------------------------------------------------------------------------------------------
     private static void createLicenseFileInLicenseFolder() {
         try {
-            File f = new File(CONFIG_FOLDER_PATH + "/" + LICENSE_FOLDER_NAME + "/" + License_FILE_NAME);
+            File f = new File(CONFIG_FOLDER_PATH + "/" + LICENSE_FOLDER_NAME + "/" + LICENSE_FILE_NAME);
             if (f.createNewFile()) {
                 Print.info("License file is created in License folder");
             }
