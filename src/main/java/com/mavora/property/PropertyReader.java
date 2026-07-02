@@ -14,16 +14,16 @@ public class PropertyReader {
     private static final String CONFIG_FOLDER_NAME = "config";
     private static final String LOG_FOLDER_NAME = "logs";
     private static final String REPORT_FOLDER_NAME = "reports";
-    private static final String CRACK_FOLDER_NAME = "crack";
+    private static final String LICENSE_FOLDER_NAME = "license";
     //-file names-------------------------------------------------------------------------------------------------------
     private static final String PROPERTY_FILE_NAME = "config.properties";
     private static final String LOG4J_PROPERTY_FILE_NAME = "log4j.properties";
-    private static final String CRACK_FILE_NAME = "licence.crk";
+    private static final String License_FILE_NAME = "mavora.lic";
     //--public Properties-----------------------------------------------------------------------------------------------
     public static final String CONFIG_FOLDER_PATH;
     public static final String LOGS_FOLDER_PATH;
     public static final String REPORTS_FOLDER_PATH;
-    public static final String CRACK_FOLDER_PATH;
+    public static final String LICENSE_FOLDER_PATH;
     public static final String LOG4J_PROPERTY_FILE_PATH;
 
     public static String DATABASE_DEFAULT_BACKUP_PATH;
@@ -52,11 +52,11 @@ public class PropertyReader {
         createConfigFolder();
         createLogfilesFolder();
         createReportFolder();
-        createCrackFolder();
+        createLicenseFolder();
         //--------------------------------------------------------------------------------------------------------------
         LOGS_FOLDER_PATH = CONFIG_FOLDER_PATH + "/" + LOG_FOLDER_NAME;
         REPORTS_FOLDER_PATH = CONFIG_FOLDER_PATH + "/" + REPORT_FOLDER_NAME;
-        CRACK_FOLDER_PATH = CONFIG_FOLDER_PATH + "/" + CRACK_FOLDER_NAME;
+        LICENSE_FOLDER_PATH = CONFIG_FOLDER_PATH + "/" + LICENSE_FOLDER_NAME;
         //-Property file------------------------------------------------------------------------------------------------
         readPropertyFile();
         log4jConfigure();
@@ -168,13 +168,13 @@ public class PropertyReader {
     }
 
     //------------------------------------------------------------------------------------------------------------------
-    private static void createCrackFolder() {
-        File f = new File(CONFIG_FOLDER_PATH + "/" + CRACK_FOLDER_NAME);
+    private static void createLicenseFolder() {
+        File f = new File(CONFIG_FOLDER_PATH + "/" + LICENSE_FOLDER_NAME);
         if (f.mkdir()) {
-            Print.info("Crack folder is created.");
-            createCrackFileInCrackFolder();
+            Print.info("License folder is created.");
+            createLicenseFileInLicenseFolder();
         } else {
-            Print.info("Crack folder already exists.");
+            Print.info("License folder already exists.");
         }
     }
 
@@ -213,11 +213,11 @@ public class PropertyReader {
     }
 
     //------------------------------------------------------------------------------------------------------------------
-    private static void createCrackFileInCrackFolder() {
+    private static void createLicenseFileInLicenseFolder() {
         try {
-            File f = new File(CONFIG_FOLDER_PATH + "/" + CRACK_FOLDER_NAME + "/" + CRACK_FILE_NAME);
+            File f = new File(CONFIG_FOLDER_PATH + "/" + LICENSE_FOLDER_NAME + "/" + License_FILE_NAME);
             if (f.createNewFile()) {
-                Print.info("Crack file is created in crack folder");
+                Print.info("License file is created in License folder");
             }
         } catch (Exception e) {
             System.err.println("[ERROR] "+e);
