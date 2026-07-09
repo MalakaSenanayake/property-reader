@@ -14,4 +14,8 @@ interface Property {
     public static final String BUSINESS_NAME = "business.detail.name";
     public static final String BUSINESS_ADDRESS = "business.detail.address";
     public static final String BUSINESS_CONTACT = "business.detail.contact";
+
+    public static final String DEFAULT_DATE_RANGE = "date.range.default.months";
+    public static final String DEFAULT_CHART_DATE_RANGE = "date.range.chart.months";
+    public static final String INVOICE_SUMMARY_YEAR_RANGE = "invoice.summary.yearRange";
 }

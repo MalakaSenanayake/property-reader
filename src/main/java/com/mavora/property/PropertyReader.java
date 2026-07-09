@@ -13,7 +13,6 @@ public class PropertyReader {
     //-folder names ----------------------------------------------------------------------------------------------------
     private static final String CONFIG_FOLDER_NAME = "config";
     private static final String LOG_FOLDER_NAME = "logs";
-    private static final String REPORT_FOLDER_NAME = "reports";
     private static final String LICENSE_FOLDER_NAME = "license";
     //-file names-------------------------------------------------------------------------------------------------------
     private static final String PROPERTY_FILE_NAME = "config.properties";
@@ -22,7 +21,6 @@ public class PropertyReader {
     //--public Properties-----------------------------------------------------------------------------------------------
     public static final String CONFIG_FOLDER_PATH;
     public static final String LOGS_FOLDER_PATH;
-    public static final String REPORTS_FOLDER_PATH;
     public static final String LICENSE_FOLDER_PATH;
     public static final String LOG4J_PROPERTY_FILE_PATH;
 
@@ -40,6 +38,10 @@ public class PropertyReader {
     public static  String BUSINESS_ADDRESS;
     public static  String BUSINESS_CONTACT;
 
+    public static  String DEFAULT_DATE_RANGE;
+    public static  String DEFAULT_CHART_DATE_RANGE;
+    public static  String INVOICE_SUMMARY_YEAR_RANGE;
+
 
     private static String relativePath;
 
@@ -51,11 +53,9 @@ public class PropertyReader {
         LOG4J_PROPERTY_FILE_PATH = CONFIG_FOLDER_PATH + "/" + LOG4J_PROPERTY_FILE_NAME;
         createConfigFolder();
         createLogfilesFolder();
-        createReportFolder();
         createLicenseFolder();
         //--------------------------------------------------------------------------------------------------------------
         LOGS_FOLDER_PATH = CONFIG_FOLDER_PATH + "/" + LOG_FOLDER_NAME;
-        REPORTS_FOLDER_PATH = CONFIG_FOLDER_PATH + "/" + REPORT_FOLDER_NAME;
         LICENSE_FOLDER_PATH = CONFIG_FOLDER_PATH + "/" + LICENSE_FOLDER_NAME;
         //-Property file------------------------------------------------------------------------------------------------
         readPropertyFile();
@@ -94,6 +94,9 @@ public class PropertyReader {
             BUSINESS_NAME = properties.getProperty(Property.BUSINESS_NAME);
             BUSINESS_ADDRESS = properties.getProperty(Property.BUSINESS_ADDRESS);
             BUSINESS_CONTACT = properties.getProperty(Property.BUSINESS_CONTACT);
+            DEFAULT_DATE_RANGE = properties.getProperty(Property.DEFAULT_DATE_RANGE);
+            DEFAULT_CHART_DATE_RANGE = properties.getProperty(Property.DEFAULT_CHART_DATE_RANGE);
+            INVOICE_SUMMARY_YEAR_RANGE = properties.getProperty(Property.INVOICE_SUMMARY_YEAR_RANGE);
             //----------------------------------------------------------------------------------------------------------
 
         } catch (FileNotFoundException ex) {
@@ -117,9 +120,12 @@ public class PropertyReader {
         prop.setProperty(Property.SERVICE_BASE_URL, "");
         prop.setProperty(Property.APP_NAME, "");
         prop.setProperty(Property.SOFTWARE_VERSION, "");
-        prop.setProperty(Property.BUSINESS_NAME, "");
+        prop.setProperty(Property.BUSINESS_NAME, "Business Name");
         prop.setProperty(Property.BUSINESS_ADDRESS, "");
         prop.setProperty(Property.BUSINESS_CONTACT, "");
+        prop.setProperty(Property.DEFAULT_DATE_RANGE, "1");
+        prop.setProperty(Property.DEFAULT_CHART_DATE_RANGE, "12");
+        prop.setProperty(Property.INVOICE_SUMMARY_YEAR_RANGE, "1");
         try {
             os = Files.newOutputStream(Paths.get(CONFIG_FOLDER_PATH + "/" + PROPERTY_FILE_NAME));
             prop.store(os, "Application Property File");
@@ -154,16 +160,6 @@ public class PropertyReader {
             createLog4JConfigFileInConfigFolder();
         } else {
             Print.info("Logs folder already exists.");
-        }
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    private static void createReportFolder() {
-        File f = new File(CONFIG_FOLDER_PATH + "/" + REPORT_FOLDER_NAME);
-        if (f.mkdir()) {
-            Print.info("Report folder is created.");
-        } else {
-            Print.info("Report folder already exists.");
         }
     }
 
