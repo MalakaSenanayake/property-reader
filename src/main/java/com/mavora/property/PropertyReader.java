@@ -41,6 +41,8 @@ public class PropertyReader {
     public static  String DEFAULT_DATE_RANGE;
     public static  String DEFAULT_CHART_DATE_RANGE;
     public static  String INVOICE_SUMMARY_YEAR_RANGE;
+    public static  String INVOICE_IGNORE_BALANCE;
+    public static  String SUMMARY_MONTH_RANGE;
 
 
     private static String relativePath;
@@ -97,6 +99,8 @@ public class PropertyReader {
             DEFAULT_DATE_RANGE = properties.getProperty(Property.DEFAULT_DATE_RANGE);
             DEFAULT_CHART_DATE_RANGE = properties.getProperty(Property.DEFAULT_CHART_DATE_RANGE);
             INVOICE_SUMMARY_YEAR_RANGE = properties.getProperty(Property.INVOICE_SUMMARY_YEAR_RANGE);
+            INVOICE_IGNORE_BALANCE = properties.getProperty(Property.INVOICE_IGNORE_BALANCE);
+            SUMMARY_MONTH_RANGE = properties.getProperty(Property.SUMMARY_MONTH_RANGE);
             //----------------------------------------------------------------------------------------------------------
 
         } catch (FileNotFoundException ex) {
@@ -118,14 +122,16 @@ public class PropertyReader {
         prop.setProperty(Property.DATABASE_SQL_DUMP_PATH, "C:\\Program Files\\MySQL\\MySQL Server 5.5\\bin");
         prop.setProperty(Property.DATABASE_SERVER_PORT, "3306");
         prop.setProperty(Property.SERVICE_BASE_URL, "");
-        prop.setProperty(Property.APP_NAME, "");
-        prop.setProperty(Property.SOFTWARE_VERSION, "");
+        prop.setProperty(Property.APP_NAME, "App");
+        prop.setProperty(Property.SOFTWARE_VERSION, "1.0.0");
         prop.setProperty(Property.BUSINESS_NAME, "Business Name");
-        prop.setProperty(Property.BUSINESS_ADDRESS, "");
-        prop.setProperty(Property.BUSINESS_CONTACT, "");
-        prop.setProperty(Property.DEFAULT_DATE_RANGE, "1");
+        prop.setProperty(Property.BUSINESS_ADDRESS, "Gampaha");
+        prop.setProperty(Property.BUSINESS_CONTACT, "0770000000");
+        prop.setProperty(Property.DEFAULT_DATE_RANGE, "3");
         prop.setProperty(Property.DEFAULT_CHART_DATE_RANGE, "12");
         prop.setProperty(Property.INVOICE_SUMMARY_YEAR_RANGE, "1");
+        prop.setProperty(Property.INVOICE_IGNORE_BALANCE, "1");
+        prop.setProperty(Property.SUMMARY_MONTH_RANGE, "24");
         try {
             os = Files.newOutputStream(Paths.get(CONFIG_FOLDER_PATH + "/" + PROPERTY_FILE_NAME));
             prop.store(os, "Application Property File");

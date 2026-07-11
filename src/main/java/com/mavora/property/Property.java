@@ -18,4 +18,6 @@ interface Property {
     public static final String DEFAULT_DATE_RANGE = "date.range.default.months";
     public static final String DEFAULT_CHART_DATE_RANGE = "date.range.chart.months";
     public static final String INVOICE_SUMMARY_YEAR_RANGE = "invoice.summary.yearRange";
+    public static final String INVOICE_IGNORE_BALANCE = "invoice.ignore.balance";
+    public static final String SUMMARY_MONTH_RANGE = "dataView.summary.monthRange";
 }
